@@ -6,7 +6,6 @@ This is a React-based weather application that allows users to check the weather
 
 - **Current Weather Display:** Shows the current weather details for Philippines only, but features will be add soon
 - **7-Day Forecast:** Provides a 7-day weather forecast with details like minimum and maximum temperatures.
-- **Location Search:** Allows users to input a location to retrieve weather information.
 
 ## Technologies Used
 
@@ -19,7 +18,7 @@ This is a React-based weather application that allows users to check the weather
 1. Clone the repository:
 
    ```
-   git clone [https://github.com/Mortreddd/WeatherApp.git](https://github.com/Mortreddd/WeatherApp.git)
+   git clone https://github.com/Mortreddd/WeatherApp.git
    git cd WeatherApp
    npm install
    npm run dev
