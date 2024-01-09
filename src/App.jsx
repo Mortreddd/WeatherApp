@@ -1,40 +1,35 @@
-import { useState } from "react";
 import { fetchForecastByLocation } from "./hooks/Forecast";
+import WeatherHeading from "./components/WeatherHeading";
+import { useState, useEffect } from "react";
+import Loading from "./components/Loading";
+import ForecastSection from "./components/ForecastSection";
+import Footer from "./components/Footer";
 
 function App() {
-  const [city, setCity] = useState("Pampanga");
+  const [result, setResult] = useState(null);
 
-  const handleSearch = async () => {
-    try {
-      const forecastData = await fetchForecastByLocation(city);
-      // Handle the fetched data here, for example, log it to the console
-      console.log("Forecast data:", forecastData);
-    } catch (error) {
-      console.error("Error fetching forecast:", error);
+  useEffect(function () {
+    async function fetchData() {
+      const data = await fetchForecastByLocation();
+      setResult(data);
     }
-  };
 
+    fetchData();
+  }, []);
+  if (!result) {
+    return <Loading />;
+  }
+  const { current, forecast, location } = result;
   return (
     <>
-      <main className="flex flex-col w-fit">
-        <h1 className="text-center text-3xl font-sans text-black">
-          Weather App
-        </h1>
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          name=""
-          id=""
-          className="rounded-lg text-2xl"
-        />
-        <button
-          onClick={handleSearch} // Call handleSearch function when button clicked
-          className="bg-green-600 text-white font-sans text-lg py-2 px-5 hover:bg-green-700"
-        >
-          Search
-        </button>
-      </main>
+      <template className="h-[100vh] w-full flex flex-col justify-between transition-all duration-300 ease-in-out px-5 gap-3 md:px-24 py-3 md:py-10 md:gap-6 bg-gradient-to-b from-teal-900 via-40% via-teal-700 to-teal-500">
+        <main className="w-full h-git py-2">
+          <WeatherHeading current={current} location={location} />
+          <ForecastSection forecastday={forecast.forecastday} />
+        </main>
+
+        <Footer />
+      </template>
     </>
   );
 }
