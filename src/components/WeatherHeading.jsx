@@ -8,7 +8,7 @@ function WeatherHeader({ current, location }) {
     <>
       <section className="w-full rounded-xl h-fit p-4 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 bg-gray-400 border-gray-100">
         <div className="w-full flex md:justify-evenly justify-between items-center py-2">
-          <h1 className="text-white font-serif text-5xl font-semibold">
+          <h1 className="text-white font-serif text-2xl md:text-5xl font-semibold">
             {location.region}, {location.country}
           </h1>
           <div className="px-2 w-fit flex gap-4">

@@ -4,7 +4,6 @@ export async function fetchForecastByLocation() {
   const location = "Philippines";
   const resourceJson = "forecast.json";
   const days = 7;
-  console.log(location);
   const url = `${API_URL}${resourceJson}?key=${API_KEY}&q=${location}&days=${days}`;
 
   try {
