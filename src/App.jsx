@@ -10,9 +10,7 @@ function App() {
 
   useEffect(function () {
     async function fetchData() {
-      const data = await navigator.geolocation.getCurrentPosition(
-        fetchForecastByLocation
-      );
+      const data = await fetchForecastByLocation();
       setResult(data);
     }
 

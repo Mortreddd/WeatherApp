@@ -1,16 +1,15 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const API_URL = import.meta.env.VITE_API_URL;
-export async function fetchForecastByLocation(location) {
-  const latitude = location.coords.latitude;
-  const longtitude = location.coords.longtitude;
-  const decimalDegree = `${latitude},${longtitude}}`;
+export async function fetchForecastByLocation() {
+  const location = "Philippines";
   const resourceJson = "forecast.json";
   const days = 7;
-  const url = `${API_URL}${resourceJson}?key=${API_KEY}&q=${decimalDegree}&days=${days}`;
+  console.log(location);
+  const url = `${API_URL}${resourceJson}?key=${API_KEY}&q=${location}&days=${days}`;
 
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: "GET",
       headers: {
         Accept: "application/json",
       },
