@@ -1,11 +1,12 @@
 // const API_KEY = import.meta.env.VITE_API_KEY;
-// const BASE_URL = import.meta.env.VITE_API_URL;
-
-export async function fetchForecastByLocation() {
-  const location = "Pampanga";
+// const API_URL = import.meta.env.VITE_API_URL;
+export async function fetchForecastByLocation(location) {
+  const latitude = location.coords.latitude;
+  const longtitude = location.coords.longtitude;
+  const decimalDegree = `${latitude},${longtitude}}`;
   const resourceJson = "forecast.json";
   const days = 7;
-  const url = `${BASE_URL}${resourceJson}?key=${API_KEY}&q=${location}&days=${days}`;
+  const url = `${API_URL}${resourceJson}?key=${API_KEY}&q=${decimalDegree}&days=${days}`;
 
   try {
     const response = await fetch(url, {
